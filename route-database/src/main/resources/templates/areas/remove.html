@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post">
+    <div>
+        <th:block th:each="area : ${areas}">
+            <label>
+                <span th:text="${area.name}"></span>
+                <input type="checkbox" name="areaIds" th:value="${area.id}">
+            </label>
+        </th:block>
+    </div>
+    <input type="submit" value="Remove">
+</form>
+</body>
+</html>

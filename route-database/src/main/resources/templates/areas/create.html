@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head"></head>
+
+<body>
+<h1>Add Area</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" action="/areas/create">
+    <label>New Area
+        <input type="text" name="name">
+    </label>
+    <label>Area Description
+        <input type="text" name="description">
+    </label>
+    <div>
+    <input type="submit" value="Add Area">
+    </div>
+</form>
+</body>
+</html>
