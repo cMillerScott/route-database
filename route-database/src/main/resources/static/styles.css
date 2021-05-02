@@ -1,18 +1,114 @@
-* {
-  margin: 0px;
-  padding: 0px;
+*{
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat";
   font-family: sans-serif;
 }
 
 body {
-  background-color: #697885;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url(/photos/chris1.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   text-align: center;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  width: 100%;
+  color: #000508;
+  background-color: #45110f;
+  color: #f1f0f5;
+  font-size: 1.5rem;
+  z-index: -1;
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+header h5{
+  padding-bottom: .3rem;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 3.5rem;
+  width: 80%;
+  color: #000508;
+  background-color: #45110f;
+  font-size: 1rem;
+  border-radius: 2rem;
+  z-index: -1;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 2%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+.nav-link{
+  padding: 1rem;
+}
+
+.nav-link a:link, a:visited {
+  color: #f1f0f5;
+  text-decoration: none;
+  font-size: .8rem;
+  text-align: center;
+  outline: none;
+}
+
+.form-container {
+  color: #f1f0f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  background-color: #645856;
+  height: 60vh;
+  width: 80vw;
+  padding: 2%;
+  margin-top: 4rem;
+  border-radius: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+.create-form {
+  color: #f1f0f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  height: 40vh;
+  width: 80vw;
+  padding: 2%;
+  border-radius: 2rem;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.form-input input,
+.form-input textarea,
+.form-input select {
+  background-color: #f1f0f5;
+  border: none;
+}
+
+.form-input label{
+  color: #43100f;
 }
 
 li{

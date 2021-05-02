@@ -4,20 +4,55 @@
 <head th:replace="fragments :: head"></head>
 
 <body>
-<h1>Add Area</h1>
 
-<nav th:replace="fragments :: navigation"></nav>
+<header>
+    <h1>~ArkanStone~</h1>
+    <hr style="width:20rem; color:#f1f0f5; margin-bottom: .25rem;">
+    <h5>CREATE AREA</h5>
+</header>
 
-<form method="post" action="/areas/create">
-    <label>New Area
-        <input type="text" name="name">
-    </label>
-    <label>Area Description
-        <input type="text" name="description">
-    </label>
-    <div>
-    <input type="submit" value="Add Area">
+<div class="form-container">
+    <h2>Create New Area</h2>
+    <form class="create-form" method="post" action="/areas/create">
+
+        <div class="form-input">
+            <label>Area Name:  </label>
+            <input th:field="${area.name}">
+            <p class="errors" th:errors="${area.name}"></p>
+        </div>
+
+        <div class="form-input">
+            <label>Area Description:  </label>
+            <textarea th:field="${area.description}"></textarea>
+            <p class="error" th:errors="${area.description}"></p>
+        </div>
+
+        <div class="form-input">
+            <label>Region:  </label>
+            <select th:field="${area.region}">
+                <option th:each="region : ${regions}"
+                        th:value="${region}"
+                        th:text="${region.displayName}"></option>
+            </select>
+        </div>
+
+        <div class="submit">
+            <input type="submit" value="Add Area">
+        </div>
+    </form>
+</div>
+
+<footer>
+    <div class="nav-link">
+        <a href="/">Home</a>
     </div>
-</form>
+    <div class="nav-link">
+        <a href="/areas">Areas</a>
+    </div>
+    <div class="nav-link">
+        <a href="/areas/create">Create Area</a>
+    </div>
+</footer>
+
 </body>
 </html>

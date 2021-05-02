@@ -2,10 +2,13 @@ package com.arkanstone.routedatabase.controllers;
 
 import com.arkanstone.routedatabase.data.AreaData;
 import com.arkanstone.routedatabase.models.Area;
+import com.arkanstone.routedatabase.models.Region;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +26,18 @@ public class AreaController {
     @GetMapping("create")
     public String displayCreateAreaForm(Model model) {
         model.addAttribute("title", "Add Area");
+        model.addAttribute(new Area());
+        model.addAttribute("regions", Region.values());
         return "areas/create";
     }
 
     @PostMapping("create")
-    public String createArea(@ModelAttribute Area newArea) {
+    public String createArea(@ModelAttribute @Valid Area newArea, Errors errors, Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Add Area");
+            return "areas/create";
+        }
         AreaData.add(newArea);
         return "redirect:";
     }
