@@ -36,6 +36,7 @@ public class AreaController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Area");
+            model.addAttribute("regions", Region.values());
             return "areas/create";
         }
         AreaData.add(newArea);

@@ -10,13 +10,14 @@ public class Area {
     private int id;
     private static int nextId;
 
-    @NotBlank(message = "Please add a Name to the new area.")
-    @Size(min=3, max=50, message = "Area name must be between 3 and 50 characters.")
+    @NotBlank(message = "Name field must not be left blank")
+    @Size(min=3, max=50, message = "Area name must be between 3 and 50 characters")
     private String name;
 
     @Size(max = 500, message = "This description is too long...")
     private String description;
-    @NotNull(message = "Area must be in a Region. ")
+
+//    @NotBlank(message = "Area must be in a Region.")
     private Region region;
 
     public Area(String name, String description, Region region) {
