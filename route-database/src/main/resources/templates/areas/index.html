@@ -18,7 +18,9 @@
 
 <table class="area-table">
     <tr th:each="area : ${areas}">
-        <td th:text="${area.name}"></td>
+        <td>
+            <a th:href="@{'/areas/view/' + ${area.id}}" th:text="${area.name} +  '  >'"></a>
+        </td>
     </tr>
 </table>
 

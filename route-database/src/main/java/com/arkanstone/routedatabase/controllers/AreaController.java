@@ -1,25 +1,28 @@
 package com.arkanstone.routedatabase.controllers;
 
-import com.arkanstone.routedatabase.data.AreaData;
+import com.arkanstone.routedatabase.data.AreaRepository;
 import com.arkanstone.routedatabase.models.Area;
 import com.arkanstone.routedatabase.models.Region;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("areas")
 public class AreaController {
 
+    @Autowired
+    private AreaRepository areaRepository;
+
     @GetMapping
     public String displayAllAreas(Model model) {
         model.addAttribute("title", "All Areas");
-        model.addAttribute("areas", AreaData.getAll());
+        model.addAttribute("areas", areaRepository.findAll());
         return "areas/index";
     }
 
@@ -39,14 +42,14 @@ public class AreaController {
             model.addAttribute("regions", Region.values());
             return "areas/create";
         }
-        AreaData.add(newArea);
+        areaRepository.save(newArea);
         return "redirect:";
     }
 
     @GetMapping("remove")
     public String displayRemoveEventForm(Model model) {
         model.addAttribute("title", "Remove Area");
-        model.addAttribute("areas", AreaData.getAll());
+        model.addAttribute("areas", areaRepository.findAll());
         return "areas/remove";
     }
 
@@ -54,11 +57,24 @@ public class AreaController {
     public String removeArea(@RequestParam(required = false) int[] areaIds) {
         if (areaIds != null) {
             for (int id : areaIds) {
-                AreaData.remove(id);
+                areaRepository.deleteById(id);
+
             }
         }
         return "redirect:";
     }
 
+    @GetMapping("view/{areaId}")
+    public String displayViewArea(Model model, @PathVariable int areaId) {
+
+        Optional optArea = areaRepository.findById(areaId);;
+        if (optArea.isPresent()) {
+            Area area = (Area) optArea.get();
+            model.addAttribute("area", area);
+            return "areas/view";
+        } else {
+            return "redirect:../";
+        }
+    }
 
 }
