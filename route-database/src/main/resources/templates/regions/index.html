@@ -7,32 +7,23 @@
 <header>
    <h1>~ArkanStone~</h1>
    <hr style="width:20rem; color:#f1f0f5; margin-bottom: .25rem;">
-   <h5>AREAS</h5>
+   <h5>Regions</h5>
 </header>
 
 <div class="areas-container">
    <div class="areas-header">
-      <h2 th:text="${area.name}">All Areas</h2>
+      <h2>All Regions</h2>
       <hr style="width: 12rem; color: #f1f0f5" />
    </div>
 
-      <div class="area-info">
-         <img th:src = "@{/photos/chris1.jpg}" />
-         <div class="description">
-            <h3>Description:  </h3>
-            <p th:text="${area.description}"></p>
-         </div>
+   <table class="area-table">
+      <tr th:each="region : ${regions}">
+         <td>
+            <a th:href="@{'/areas/view/'}" th:text="${region.displayName} +  '  >'"></a>
+         </td>
+      </tr>
+   </table>
 
-         <div class="region">
-            <h3>Region:  </h3>
-            <p th:text="${area.region}"></p>
-         </div>
-
-         <div class="edit-submit">
-            <a th:href="@{/areas/edit/{id}(id=${area.id})}">Edit Area</a>
-         </div>
-
-      </div>
 
 </div>
 
