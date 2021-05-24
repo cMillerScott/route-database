@@ -5,7 +5,8 @@ public enum Region {
     NORTHCENTRAL("North Central"),
     NORTHWEST("North West"),
     NORTHEAST("North East"),
-    RIVERVALLEYOUACHITAS("River Valley / Ouachitas");
+    RIVERVALLEYOUACHITAS("River Valley / Ouachitas"),
+    BUFFALORIVER("Buffalo River");
 
     private final String displayName;
 
@@ -16,4 +17,5 @@ public enum Region {
     public String getDisplayName() {
         return displayName;
     }
+
 }

@@ -19,7 +19,7 @@
    <table class="area-table">
       <tr th:each="region : ${regions}">
          <td>
-            <a th:href="@{'/areas/view/'}" th:text="${region.displayName} +  '  >'"></a>
+            <a th:href="@{'/regions/view/' + ${region}}" th:text="${region.displayName} + '  >'"></a>
          </td>
       </tr>
    </table>

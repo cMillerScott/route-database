@@ -43,9 +43,10 @@ header h5 {
   padding-bottom: 0.3rem;
 }
 
-/* forms */
+/* containers */
 
-.home-container, .form-container,
+.home-container,
+.form-container,
 .areas-container {
   color: #f1f0f5;
   display: flex;
@@ -63,7 +64,10 @@ header h5 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
-.home-header, .form-header,
+/* headers */
+
+.home-header,
+.form-header,
 .areas-header {
   display: flex;
   flex-direction: column;
@@ -71,6 +75,31 @@ header h5 {
   justify-content: center;
   color: #f1f0f5;
   width: 80%;
+}
+
+/* home view */
+
+.home-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem;
+  padding: 2%;
+  height: 100%;
+  width: 100%;
+}
+
+.welcome {
+  padding: 2%;
+  margin-bottom: 2rem;
+}
+
+.stats {
+  background-color: #796a67;
+  padding: 4%;
+  border-radius: 1rem;
+  color: #43100f;
 }
 
 /* area views */
@@ -87,11 +116,12 @@ header h5 {
 }
 
 .area-info h3 {
-  color:#43100f;
+  color: #43100f;
   padding-bottom: 2%;
 }
 
-.description, .region {
+.description,
+.region {
   align-self: flex-start;
   margin-bottom: 2rem;
   text-align: left;
@@ -218,7 +248,8 @@ header h5 {
   margin-bottom: 2rem;
 }
 
-.area-table a:link, .area-table a:visited{
+.area-table a:link,
+.area-table a:visited {
   text-decoration: none;
   color: #43100f;
 }

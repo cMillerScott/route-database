@@ -7,6 +7,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
+//  parent class for Area and Route, holds id, name, and description data as well as equals/hashcode method
+
 @MappedSuperclass
 public abstract class AbstractEntity {
 

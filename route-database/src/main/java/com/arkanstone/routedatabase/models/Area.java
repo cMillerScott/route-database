@@ -2,6 +2,8 @@ package com.arkanstone.routedatabase.models;
 
 import javax.persistence.Entity;
 
+//  TODO: create relationship with Route(one to many?), add more fields to class(location/directions, pic, etc...)
+
 @Entity
 public class Area extends AbstractEntity {
 

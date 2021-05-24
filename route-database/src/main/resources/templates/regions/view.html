@@ -7,32 +7,25 @@
 <header>
    <h1>~ArkanStone~</h1>
    <hr style="width:20rem; color:#f1f0f5; margin-bottom: .25rem;">
-   <h5>AREAS</h5>
+   <h5>REGIONS</h5>
 </header>
 
 <div class="areas-container">
    <div class="areas-header">
-      <h2 th:text="${area.name}">All Areas</h2>
+      <h2 th:text="${region.displayName} + ' Region'"></h2>
       <hr style="width: 12rem; color: #f1f0f5" />
    </div>
 
-      <div class="area-info">
-<!--         <img th:src = "@{/photos/chris1.jpg}" />-->
-         <div class="description">
-            <h3>Description:  </h3>
-            <p th:text="${area.description}"></p>
-         </div>
-
-         <div class="region">
-            <h3>Region:  </h3>
-            <p th:text="${regionDisplayName}"></p>
-         </div>
-
-         <div class="edit-submit">
-            <a th:href="@{/areas/edit/{id}(id=${area.id})}">Edit Area</a>
-         </div>
-
-      </div>
+   <table class="area-table">
+      <tr>
+         <th th:text="'Areas in ' + ${region.displayName} + ' Region'"></th>
+      </tr>
+      <tr th:each="area : ${areas}">
+         <td th:if="${area.region == region}">
+            <a th:href="@{'/areas/view/' + ${area.id}}" th:text="${area.name} +  '  >'"></a>
+         </td>
+      </tr>
+   </table>
 
 </div>
 
