@@ -16,7 +16,7 @@
       <h2>Edit Area</h2>
       <hr style="width:12rem; color:#f1f0f5;">
    </div>
-   <form class="create-form" method="post">
+   <form class="create-form" id="editForm" method="post">
 
       <div class="form-input">
          <input type="hidden" th:value="${area.id}" name="areaId" />
@@ -43,9 +43,19 @@
          </select>
       </div>
 
+<!--      <div class="form-input">-->
+<!--         <label>Remove Area:  </label>-->
+<!--            <input type="checkbox" name="areaIds" th:value="${area.id}">-->
+<!--      </div>-->
+<div class="buttons-container">
       <div class="update-area">
          <input type="submit" value="Update Area">
       </div>
+
+      <div class="remove-area">
+         <button type="submit" form="editForm" name="delId" th:value="${area.id}" onclick="alert('Are you sure you want to remove this area?')">Remove Area</button>
+      </div>
+</div>
 
    </form>
 </div>
