@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
 <head th:fragment="head">
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,17 +14,41 @@
 </head>
 
 <body>
-<nav th:fragment="navigation">
+
+<header th:fragment="areas-header">
+    <h1>~ArkanStone~</h1>
+    <hr style="width:20rem; color:#f1f0f5; margin-bottom: .25rem;">
+    <h5>AREAS</h5>
+</header>
+
+<header th:fragment="regions-header">
+    <h1>~ArkanStone~</h1>
+    <hr style="width:20rem; color:#f1f0f5; margin-bottom: .25rem;">
+    <h5>REGIONS</h5>
+</header>
+
+<header th:fragment="routes-header">
+    <h1>~ArkanStone~</h1>
+    <hr style="width:20rem; color:#f1f0f5; margin-bottom: .25rem;">
+    <h5>ROUTES</h5>
+</header>
+
+<footer th:fragment="navbar">
+
     <div class="nav-link">
-        <a href="/home">Home</a>
+        <a href="/">Home</a>
+    </div>
+    <div class="nav-link">
+        <a href="/regions">Regions</a>
     </div>
     <div class="nav-link">
         <a href="/areas">Areas</a>
     </div>
     <div class="nav-link">
-        <a href="/areas/create">Create Area</a>
+        <a href="/routes">Routes</a>
     </div>
-</nav>
+
+</footer>
 
 </body>
 </html>

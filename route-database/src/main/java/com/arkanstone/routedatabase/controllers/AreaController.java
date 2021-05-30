@@ -27,16 +27,20 @@ public class AreaController {
     //  displays table of all areas within database
     @GetMapping
     public String displayAllAreas(Model model) {
+
         model.addAttribute("areas", areaRepository.findAll());
         return "areas/index";
+
     }
 
     //  displays form for creating new area within database
     @GetMapping("create")
     public String displayCreateAreaForm(Model model) {
+
         model.addAttribute(new Area());
         model.addAttribute("regions", Region.values());
         return "areas/create";
+
     }
 
     //  handles adding newly created area to database
@@ -54,6 +58,7 @@ public class AreaController {
     //  displays form for editing existing area
     @GetMapping("edit/{areaId}")
     public String displayEditOrRemoveAreaForm(Model model, @PathVariable int areaId) {
+
         Optional<Area> optArea = areaRepository.findById(areaId);
 
         if (optArea.isPresent()) {
@@ -72,6 +77,11 @@ public class AreaController {
 
         Optional<Area> optArea = areaRepository.findById(areaId);
 
+        if (delId != null) {
+            areaRepository.deleteById(areaId);
+            return "redirect:../";
+        }
+
         if (errors.hasErrors()) {
             model.addAttribute("regions", Region.values());
             return "areas/edit";
@@ -85,18 +95,14 @@ public class AreaController {
             areaRepository.save(area);
             model.addAttribute("area", area);
             model.addAttribute("regionDisplayName", area.getRegion().getDisplayName());
-
-            if (delId != null) {
-                areaRepository.deleteById(delId);
-                return "redirect:../";
-            }
             return "areas/view";
         } else {
             return "redirect:";
         }
     }
 
-//    TODO: Link/table for routes within area
+
+    //    TODO: Link/table for routes within area
     //  displays view page for single area
     @GetMapping("view/{areaId}")
     public String displayViewArea(Region region, Model model, @PathVariable int areaId) {

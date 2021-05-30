@@ -45,7 +45,7 @@ public class RouteController {
     }
 
     @GetMapping("edit/{routeId}")
-    public String displayEditRouteForm(Model model, @PathVariable int routeId) {
+    public String displayEditOrRemoveRouteForm(Model model, @PathVariable int routeId) {
 
         Optional<Route> optRoute = routeRepository.findById(routeId);
 
@@ -59,9 +59,14 @@ public class RouteController {
     }
 
     @PostMapping("edit/{routeId}")
-    public String updateRoute(Model model, @ModelAttribute @Valid Route newRoute, Errors errors, @PathVariable int routeId) {
+    public String processEditOrRemoveRouteForm(@RequestParam(required = false) Integer delId, Model model, @ModelAttribute @Valid Route newRoute, Errors errors, @PathVariable int routeId) {
 
         Optional<Route> optRoute = routeRepository.findById(routeId);
+
+        if (delId != null) {
+            routeRepository.deleteById(routeId);
+            return "redirect:../";
+        }
 
         if (errors.hasErrors()) {
             model.addAttribute("regions", Region.values());
