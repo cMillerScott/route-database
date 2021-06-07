@@ -23,6 +23,7 @@ public class RegionController {
     //  displays table of Regions that link to individual Region pages
     @GetMapping
     public String displayAllRegions(Model model) {
+        model.addAttribute("title", "REGIONS");
         model.addAttribute("regions", Region.values());
         model.addAttribute("areas", areaRepository.findAll());
 //        model.addAttribute("areaCount", areaRepository.count());
@@ -34,7 +35,7 @@ public class RegionController {
     //  displays view of individual Region
     @GetMapping("view/{region}")
     public String displayViewRegion(Area area, Model model, @PathVariable Region region) {
-
+        model.addAttribute("title", "REGIONS");
         model.addAttribute("regions", Region.values());
         model.addAttribute("areas", areaRepository.findAll());
 //        model.addAttribute("areaCount", areaRepository.count());

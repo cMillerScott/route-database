@@ -5,17 +5,27 @@
 
 <body>
 
-<header th:replace="fragments :: routes-header"></header>
+<header th:replace="fragments :: header"></header>
 
-<div class="form-container">
-    <div class="form-header">
+<div class="top-tile">
+    <div class="tile-header">
         <h2>Edit Route</h2>
-        <hr style="width:12rem; color:#45110f;">
+        <hr/>
     </div>
+
     <form class="create-form" method="post">
 
         <div class="form-input">
             <input type="hidden" th:value="${route.id}" name="routeId"/>
+        </div>
+
+        <div class="form-input">
+            <label>Area: </label>
+            <select th:field="${route.area}">
+                <option th:each="area : ${areas}"
+                        th:value="${area.id}"
+                        th:text="${area.name}"></option>
+            </select>
         </div>
 
         <div class="form-input">

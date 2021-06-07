@@ -5,13 +5,14 @@
 
 <body>
 
-<header th:replace="fragments :: areas-header"></header>
+<header th:replace="fragments :: header"></header>
 
-<div class="form-container">
-    <div class="form-header">
+<div class="top-tile">
+    <div class="tile-header">
         <h2>Create New Area</h2>
-        <hr style="width:12rem; color:#45110f;">
+        <hr/>
     </div>
+
     <form class="create-form" method="post" action="/areas/create">
 
         <div class="form-input">

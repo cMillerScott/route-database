@@ -5,21 +5,31 @@
 
 <body>
 
-<header th:replace="fragments :: regions-header"></header>
+<header th:replace="fragments :: header"></header>
 
-<div class="areas-container">
-    <div class="areas-header">
+<div class="top-tile">
+    <div class="tile-header">
         <h2 th:text="${region.displayName} + ' Region'"></h2>
-        <hr style="width: 12rem; color: #f1f0f5"/>
+        <hr/>
     </div>
 
     <table class="area-table">
-        <tr>
-            <th th:text="'Areas in ' + ${region.displayName} + ' Region'"></th>
-        </tr>
+
+        <div class="table-header">
+            <div class="table-title">
+            <h2>Areas:</h2>
+            <hr/>
+            </div>
+
+            <div class="add-area">
+                <a href="/areas/create">Add Area</a>
+            </div>
+        </div>
+
         <tr th:each="area : ${areas}">
             <td th:if="${area.region == region}">
                 <a th:href="@{'/areas/view/' + ${area.id}}" th:text="${area.name} +  '  >'"></a>
+                <p th:text="${area.routes.size} + ' routes'"></p>
             </td>
         </tr>
     </table>

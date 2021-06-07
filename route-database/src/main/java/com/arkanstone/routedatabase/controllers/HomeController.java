@@ -19,10 +19,10 @@ public class HomeController {
     @Autowired
     private RouteRepository routeRepository;
 
-    //  TODO: add counts for regions and routes
     //  displays homepage with count of areas in database
     @GetMapping
     public String index(Model model) {
+        model.addAttribute("title", "HOME");
         model.addAttribute("regionCount", Region.values().length);
         model.addAttribute("areaCount", areaRepository.count());
         model.addAttribute("routeCount", routeRepository.count());

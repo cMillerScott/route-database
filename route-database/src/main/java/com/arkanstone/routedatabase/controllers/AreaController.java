@@ -4,6 +4,7 @@ import com.arkanstone.routedatabase.data.AreaRepository;
 import com.arkanstone.routedatabase.data.RouteRepository;
 import com.arkanstone.routedatabase.models.Area;
 import com.arkanstone.routedatabase.models.Region;
+import com.arkanstone.routedatabase.models.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,10 +25,11 @@ public class AreaController {
     @Autowired
     private RouteRepository routeRepository;
 
+    //  TODO: add route count to each area
     //  displays table of all areas within database
     @GetMapping
     public String displayAllAreas(Model model) {
-
+        model.addAttribute("title", "AREAS");
         model.addAttribute("areas", areaRepository.findAll());
         return "areas/index";
 
@@ -36,7 +38,7 @@ public class AreaController {
     //  displays form for creating new area within database
     @GetMapping("create")
     public String displayCreateAreaForm(Model model) {
-
+        model.addAttribute("title", "AREAS");
         model.addAttribute(new Area());
         model.addAttribute("regions", Region.values());
         return "areas/create";
@@ -48,6 +50,7 @@ public class AreaController {
     public String processCreateAreaForm(@ModelAttribute @Valid Area newArea, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("title", "AREAS");
             model.addAttribute("regions", Region.values());
             return "areas/create";
         }
@@ -63,6 +66,7 @@ public class AreaController {
 
         if (optArea.isPresent()) {
             Area area = (Area) optArea.get();
+            model.addAttribute("title", "AREAS");
             model.addAttribute("area", area);
             model.addAttribute("regions", Region.values());
             return "areas/edit";
@@ -78,11 +82,19 @@ public class AreaController {
         Optional<Area> optArea = areaRepository.findById(areaId);
 
         if (delId != null) {
+            if (optArea.isPresent()) {
+                Area area = (Area) optArea.get();
+
+                for (Route route : area.getRoutes()) {
+                    routeRepository.deleteById(route.getId());
+                }
+            }
             areaRepository.deleteById(areaId);
             return "redirect:../";
         }
 
         if (errors.hasErrors()) {
+            model.addAttribute("title", "AREAS");
             model.addAttribute("regions", Region.values());
             return "areas/edit";
         }
@@ -93,6 +105,7 @@ public class AreaController {
             area.setDescription(newArea.getDescription());
             area.setRegion(newArea.getRegion());
             areaRepository.save(area);
+            model.addAttribute("title", "AREAS");
             model.addAttribute("area", area);
             model.addAttribute("regionDisplayName", area.getRegion().getDisplayName());
             return "areas/view";
@@ -111,8 +124,10 @@ public class AreaController {
 
         if (optArea.isPresent()) {
             Area area = (Area) optArea.get();
+            model.addAttribute("title", "AREAS");
             model.addAttribute("area", area);
             model.addAttribute("regionDisplayName", area.getRegion().getDisplayName());
+            model.addAttribute("routes", area.getRoutes());
             return "areas/view";
         } else {
             return "redirect:../";

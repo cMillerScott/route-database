@@ -10,42 +10,35 @@
 
     <script th:src="@{/script.js}"></script>
     <link th:href="@{/styles.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 
 <body>
 
-<header th:fragment="areas-header">
-    <h1>~ArkanStone~</h1>
-    <hr style="width:20rem; color:#f1f0f5; margin-bottom: .25rem;">
-    <h5>AREAS</h5>
-</header>
-
-<header th:fragment="regions-header">
-    <h1>~ArkanStone~</h1>
-    <hr style="width:20rem; color:#f1f0f5; margin-bottom: .25rem;">
-    <h5>REGIONS</h5>
-</header>
-
-<header th:fragment="routes-header">
-    <h1>~ArkanStone~</h1>
-    <hr style="width:20rem; color:#f1f0f5; margin-bottom: .25rem;">
-    <h5>ROUTES</h5>
+<header th:fragment="header">
+    <div class="site-title">
+        <h1>ArkanStone</h1>
+        <hr/>
+    </div>
+    <h5 th:text="${title}"></h5>
 </header>
 
 <footer th:fragment="navbar">
 
     <div class="nav-link">
-        <a href="/">Home</a>
+        <a href="/"><i class="material-icons">cabin</i><br/>HOME</a>
     </div>
     <div class="nav-link">
-        <a href="/regions">Regions</a>
+        <a href="/regions"><i class="material-icons">all_out</i><br/>REGIONS</a>
     </div>
     <div class="nav-link">
-        <a href="/areas">Areas</a>
+        <a href="/areas"><i class="material-icons">art_track</i><br/>AREAS</a>
     </div>
     <div class="nav-link">
-        <a href="/routes">Routes</a>
+        <a href="/routes"><i class="material-icons">show_chart</i><br/>ROUTES</a>
     </div>
 
 </footer>

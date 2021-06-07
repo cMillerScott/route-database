@@ -5,13 +5,14 @@
 
 <body>
 
-<header th:replace="fragments :: areas-header"></header>
+<header th:replace="fragments :: header"></header>
 
-<div class="form-container">
-    <div class="form-header">
+<div class="top-tile">
+    <div class="tile-header">
         <h2>Edit Area</h2>
-        <hr style="width:12rem; color:#45110f;">
+        <hr/>
     </div>
+
     <form class="create-form" id="editForm" method="post">
 
         <div class="form-input">
@@ -44,9 +45,10 @@
                 <input type="submit" value="Update Area">
             </div>
 
+<!--            TODO: resolve cancel bug on confirm box-->
             <div class="remove-area">
                 <button type="submit" form="editForm" name="delId" th:value="${area.id}"
-                        onclick="alert('Are you sure you want to remove this area?')">Remove Area
+                        th:onclick="confirm('Removing this area will also remove the routes within it. Are you sure you want to proceed?')">Remove Area
                 </button>
             </div>
         </div>

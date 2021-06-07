@@ -1,5 +1,6 @@
 package com.arkanstone.routedatabase.controllers;
 
+import com.arkanstone.routedatabase.data.AreaRepository;
 import com.arkanstone.routedatabase.data.RouteRepository;
 import com.arkanstone.routedatabase.models.Region;
 import com.arkanstone.routedatabase.models.Route;
@@ -19,17 +20,21 @@ public class RouteController {
     @Autowired
     private RouteRepository routeRepository;
 
+    @Autowired
+    private AreaRepository areaRepository;
+
     @GetMapping
     public String displayAllRoutes(Model model) {
-
+        model.addAttribute("title", "ROUTES");
         model.addAttribute("routes", routeRepository.findAll());
         return "routes/index";
     }
 
     @GetMapping("create")
     public String displayCreateRouteForm(Model model) {
-
+        model.addAttribute("title", "ROUTES");
         model.addAttribute(new Route());
+        model.addAttribute("areas", areaRepository.findAll());
         return "routes/create";
     }
 
@@ -37,6 +42,8 @@ public class RouteController {
     public String processCreateRouteForm(@ModelAttribute @Valid Route newRoute, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("title", "ROUTES");
+            model.addAttribute("areas", areaRepository.findAll());
             return "routes/create";
         }
 
@@ -51,6 +58,8 @@ public class RouteController {
 
         if (optRoute.isPresent()) {
             Route route = (Route) optRoute.get();
+            model.addAttribute("title", "ROUTES");
+            model.addAttribute("areas", areaRepository.findAll());
             model.addAttribute("route", route);
             return "routes/edit";
         } else {
@@ -69,7 +78,8 @@ public class RouteController {
         }
 
         if (errors.hasErrors()) {
-            model.addAttribute("regions", Region.values());
+            model.addAttribute("title", "ROUTES");
+            model.addAttribute("areas", areaRepository.findAll());
             return "routes/edit";
         }
 
@@ -77,32 +87,13 @@ public class RouteController {
             Route route = (Route) optRoute.get();
             route.setName(newRoute.getName());
             route.setDescription(newRoute.getDescription());
+            route.setArea(newRoute.getArea());
             routeRepository.save(route);
             model.addAttribute("route", route);
             return "routes/view";
         } else {
             return "redirect:";
         }
-    }
-
-
-    @GetMapping("remove")
-    public String displayRemoveRouteForm(Model model) {
-
-        model.addAttribute("routes", routeRepository.findAll());
-        return "routes/remove";
-
-    }
-
-    @PostMapping("remove")
-    public String processRemoveRouteForm(@RequestParam(required = false) int[] routeIds) {
-
-        if (routeIds != null) {
-            for (int id : routeIds) {
-                routeRepository.deleteById(id);
-            }
-        }
-        return "redirect:";
     }
 
     @GetMapping("view/{routeId}")
@@ -112,6 +103,7 @@ public class RouteController {
 
         if (optRoute.isPresent()) {
             Route route = (Route) optRoute.get();
+            model.addAttribute("title", "ROUTES");
             model.addAttribute("route", route);
             return "routes/view";
         } else {

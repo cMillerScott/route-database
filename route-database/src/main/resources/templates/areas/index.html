@@ -5,18 +5,19 @@
 
 <body>
 
-<header th:replace="fragments :: areas-header"></header>
+<header th:replace="fragments :: header"></header>
 
-<div class="areas-container">
-    <div class="areas-header">
+<div class="top-tile">
+    <div class="tile-header">
         <h2>All Areas</h2>
-        <hr style="width: 12rem; color: #45110f"/>
+        <hr/>
     </div>
 
     <table class="area-table">
         <tr th:each="area : ${areas}">
             <td>
-                <a th:href="@{'/areas/view/' + ${area.id}}" th:text="${area.name} +  '  >'"></a>
+                <a th:href="@{'/areas/view/' + ${area.id}}" th:text="${area.name} + '  >'"></a>
+                <p th:text="${area.routes.size} + ' routes'"></p>
             </td>
         </tr>
     </table>

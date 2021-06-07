@@ -5,12 +5,12 @@
 
 <body>
 
-<header th:replace="fragments :: routes-header"></header>
+<header th:replace="fragments :: header"></header>
 
-<div class="areas-container">
-    <div class="areas-header">
-        <h2 th:text="${route.name}">All Routes</h2>
-        <hr style="width: 12rem; color: #45110f"/>
+<div class="top-tile">
+    <div class="tile-header">
+        <h2 th:text="${route.name}"></h2>
+        <hr/>
     </div>
 
     <div class="area-info">

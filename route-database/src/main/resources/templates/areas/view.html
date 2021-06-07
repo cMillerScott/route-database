@@ -5,12 +5,12 @@
 
 <body>
 
-<header th:replace="fragments :: areas-header"></header>
+<header th:replace="fragments :: header"></header>
 
-<div class="areas-container">
-    <div class="areas-header">
-        <h2 th:text="${area.name}">All Areas</h2>
-        <hr style="width: 12rem; color: #45110f"/>
+<div class="top-tile">
+    <div class="tile-header">
+        <h2 th:text="${area.name}"></h2>
+        <hr/>
     </div>
 
     <div class="area-info">
@@ -31,6 +31,36 @@
 
     </div>
 
+    <!--    <table class="area-table">-->
+    <!--        <tr>-->
+    <!--            <th>Routes:</th>-->
+    <!--            <hr/>-->
+    <!--        </tr>-->
+    <!--        <tr th:each="route : ${routes}">-->
+    <!--            <td>-->
+    <!--                <a th:href="@{'/routes/view/' + ${route.id}}" th:text="${route.name} +  '  >'"></a>-->
+    <!--                <p th:text="${area.routes.size} + ' routes'"></p>-->
+    <!--            </td>-->
+    <!--        </tr>-->
+    <!--    </table>-->
+
+</div>
+
+<div class="tile-two">
+
+    <table class="route-table">
+
+        <div class="table-header">
+            <h2>Routes:</h2>
+            <hr/>
+        </div>
+        <tr th:each="route : ${routes}">
+            <td>
+                <a th:href="@{'/routes/view/' + ${route.id}}" th:text="${route.name} +  '  >'"></a>
+                <!--                <p th:text="${area.routes.size} + ' routes'"></p>-->
+            </td>
+        </tr>
+    </table>
 </div>
 
 <footer th:replace="fragments :: navbar"></footer>
