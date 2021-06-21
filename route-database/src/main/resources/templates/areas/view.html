@@ -51,13 +51,19 @@
     <table class="route-table">
 
         <div class="table-header">
-            <h2>Routes:</h2>
-            <hr/>
+            <div class="table-title">
+                <h2>Routes:</h2>
+                <hr/>
+            </div>
+
+            <div class="add-area">
+                <a href="/routes/create">Add Route</a>
+            </div>
         </div>
+
         <tr th:each="route : ${routes}">
             <td>
                 <a th:href="@{'/routes/view/' + ${route.id}}" th:text="${route.name} +  '  >'"></a>
-                <!--                <p th:text="${area.routes.size} + ' routes'"></p>-->
             </td>
         </tr>
     </table>

@@ -45,10 +45,9 @@
                 <input type="submit" value="Update Area">
             </div>
 
-<!--            TODO: resolve cancel bug on confirm box-->
             <div class="remove-area">
-                <button type="submit" form="editForm" name="delId" th:value="${area.id}"
-                        th:onclick="confirm('Removing this area will also remove the routes within it. Are you sure you want to proceed?')">Remove Area
+                <button type="submit" name="delId" id="delId" th:value="${area.id}"
+                        onClick="processConfirm()">Remove Area
                 </button>
             </div>
         </div>

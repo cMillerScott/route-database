@@ -77,7 +77,7 @@ public class AreaController {
 
     //  handles form for editing or deleting existing area, updates database
     @PostMapping("edit/{areaId}")
-    public String processEditOrRemoveAreaForm(@RequestParam(required = false) Integer delId, Model model, @ModelAttribute @Valid Area newArea, Errors errors, @PathVariable int areaId) {
+    public String processEditOrRemoveAreaForm(@RequestParam(required = false) Object delId, Model model, @ModelAttribute @Valid Area newArea, Errors errors, @PathVariable int areaId) {
 
         Optional<Area> optArea = areaRepository.findById(areaId);
 
