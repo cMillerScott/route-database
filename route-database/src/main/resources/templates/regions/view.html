@@ -27,10 +27,12 @@
         </div>
 
         <tr th:each="area : ${areas}">
-            <td th:if="${area.region == region}">
-                <a th:href="@{'/areas/view/' + ${area.id}}" th:text="${area.name} +  '  >'"></a>
-                <p th:text="${area.routes.size} + ' routes'"></p>
-            </td>
+            <th:block th:if="${area.region == region}">
+                <td>
+                    <a th:href="@{'/areas/view/' + ${area.id}}" th:text="${area.name} +  '  >'"></a>
+                    <p th:text="${area.routes.size} + ' routes'"></p>
+                </td>
+            </th:block>
         </tr>
     </table>
 

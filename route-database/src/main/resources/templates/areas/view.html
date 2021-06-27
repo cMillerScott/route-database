@@ -14,7 +14,6 @@
     </div>
 
     <div class="area-info">
-        <!--         <img th:src = "@{/photos/chris1.jpg}" />-->
         <div class="description">
             <h3>Description: </h3>
             <p th:text="${area.description}"></p>
@@ -30,19 +29,6 @@
         </div>
 
     </div>
-
-    <!--    <table class="area-table">-->
-    <!--        <tr>-->
-    <!--            <th>Routes:</th>-->
-    <!--            <hr/>-->
-    <!--        </tr>-->
-    <!--        <tr th:each="route : ${routes}">-->
-    <!--            <td>-->
-    <!--                <a th:href="@{'/routes/view/' + ${route.id}}" th:text="${route.name} +  '  >'"></a>-->
-    <!--                <p th:text="${area.routes.size} + ' routes'"></p>-->
-    <!--            </td>-->
-    <!--        </tr>-->
-    <!--    </table>-->
 
 </div>
 
@@ -63,7 +49,7 @@
 
         <tr th:each="route : ${routes}">
             <td>
-                <a th:href="@{'/routes/view/' + ${route.id}}" th:text="${route.name} +  '  >'"></a>
+                <a th:href="@{'/routes/view/' + ${route.id}}" th:text="${route.name} + '  >'"></a>
             </td>
         </tr>
     </table>

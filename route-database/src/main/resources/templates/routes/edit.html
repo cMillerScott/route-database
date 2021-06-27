@@ -13,7 +13,7 @@
         <hr/>
     </div>
 
-    <form class="create-form" method="post">
+    <form class="create-form" id="editForm" method="post">
 
         <div class="form-input">
             <input type="hidden" th:value="${route.id}" name="routeId"/>
@@ -47,7 +47,7 @@
 
             <div class="remove-area">
                 <button type="submit" name="delId" th:value="${route.id}"
-                        onclick="alert('Are you sure you want to remove this route?')">Remove Route
+                        onclick="deleteRouteConfirm()">Remove Route
                 </button>
             </div>
         </div>

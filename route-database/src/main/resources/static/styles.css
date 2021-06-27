@@ -178,9 +178,23 @@ header h5 {
 .form-input textarea,
 .form-input select {
   background-color: #f1f0f5;
+  color: #43100f;
+  font-weight: bold;
   border: none;
   border-radius: 4px;
   padding: 2%;
+}
+
+.form-input input:focus,
+.form-input textarea:focus,
+.form-input select:focus {
+  outline: 2px solid #43100f;
+  color: #43100f;
+  font-weight: bold;
+}
+
+.form-input option:focus{
+  font-family: "Roboto";
 }
 
 .form-input label {
@@ -220,7 +234,7 @@ header h5 {
 /* edit area button / link */
 
 .edit-submit input[type="submit"],
-.edit-submit a, .add-area {
+.edit-submit a, .add-area, add-area a {
   color: rgb(241, 240, 245);
   background-color: #43100f;
   border: none;
