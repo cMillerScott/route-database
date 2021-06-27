@@ -355,7 +355,7 @@ footer {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 7%;
+  height: 3rem;
   width: 80%;
   color: #000508;
   background-color: #45110f;
@@ -363,7 +363,7 @@ footer {
   z-index: 2;
   position: fixed;
   bottom: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -384,8 +384,64 @@ a:visited {
   outline: none;
 }
 
-.nav-link a:link :: after {
-  text-decoration: underline;
+ @media (min-width: 850px) {
+
+  header {
+    border-bottom-left-radius: 0rem;
+  }
+
+  .top-tile {
+    margin-top: 9rem;
+    width: 60%;
+  }
+
+   footer{
+    flex-direction: column;
+    justify-content: center;
+    height: 43rem;
+    width: 8rem;
+    border-radius: 0rem;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: none;
+  }
+
+  .nav-link {
+    margin-bottom: 4rem;
+  }
+
+  .nav-link a:link,
+  a:visited {
+    font-size: 14px;
+  }
+
+  .nav-link i {
+    transition: all ease-in-out 300ms;
+  }
+
+  .nav-link:hover i {
+    transform: translateY(-.5rem);
+  }
+
+  .nav-link::after {
+    content: '';
+    display: block;
+    margin-top: .25rem;
+    height: 2px;
+    border-radius: 2rem;
+    width: 0%;
+    background-color: #f1f0f5;
+    transition: all ease-in-out 300ms;
+  }
+
+  .nav-link:hover::after {
+    width:100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+  }
+
 }
 
 
